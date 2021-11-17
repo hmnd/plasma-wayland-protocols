@@ -6,12 +6,13 @@
     SPDX-FileCopyrightText: 2012-2013 Collabora, Ltd.
     SPDX-FileCopyrightText: 2015 Sebastian Kügler <sebas@kde.org>
     SPDX-FileCopyrightText: 2021 Méven Car <meven.car@enioka.com>
+    SPDX-FileCopyrightText: 2021 Xaver Hugl <xaver.hugl@gmail.com>
 
     SPDX-License-Identifier: MIT-CMU
     ]]></copyright>
 
 
-  <interface name="kde_output_device_v2" version="2">
+  <interface name="kde_output_device_v2" version="3">
     <description summary="output configuration representation">
       An output device describes a display device available to the compositor.
       output_device is similar to wl_output, but focuses on output
@@ -273,7 +274,19 @@
       </description>
       <arg name="name" type="string"/>
     </event>
-  
+
+    <event name="supported_bits_per_color">
+      <description summary="supported resolution per color channel"/>
+      <arg name="min" type="uint"/>
+      <arg name="max" type="uint"/>
+    </event>
+
+    <event name="used_bits_per_color">
+      <description summary="used bit depth">
+        How many bits per color channel are currently used on this output
+      </description>
+      <arg name="bitdepth" type="uint"/>
+    </event>
   </interface>
 
   <interface name="kde_output_device_mode_v2" version="1">
